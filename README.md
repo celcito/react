@@ -1,3 +1,12 @@
+OBs
+Clone adn runs npm install to download dependencies
+run npm start
+
+this app runs bakend from json-server
+
+
+run json-server --p 3005 dados.json
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
