@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "name": "Celso Ricardo Alves",
+      "fone": "11 41063619",
+      "birth_date": "29/04/1977",
+      "expires_at": "",
+      "cnh_number": "121241212",
+      "doc_type": "",
+      "category": "AB",
+      "cpf_number": "16155498890",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "Tripa Seca",
+      "fone": "12121",
+      "birth_date": "1976-09-22T00:00:00",
+      "state_": "São Paulo",
+      "city": "São Paulo",
+      "expires_at": "2010-11-23T00:00:00+00:00",
+      "country": "BR",
+      "cnh_number": "700441702",
+      "doc_type": "CNH",
+      "category": "abc",
+      "cpf_number": "16155498890"
+    },
+    {
+      "name": "teste da silva sauro",
+      "fone": "1141063618",
+      "birth_date": "30/02/1988",
+      "expires_at": "",
+      "cnh_number": "44444444444444444",
+      "doc_type": "",
+      "category": "d",
+      "cpf_number": "22222222222222222",
+      "id": 4
+    }
+  ]
+}
