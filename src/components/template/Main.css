@@ -1,0 +1,34 @@
+main > div {
+   background-color: #ffc107;
+
+}
+
+
+.form{
+	background:#fff;
+	padding: 20px;
+}
+
+.spacer{
+	background:#fff;
+	padding: 20px;
+}
+
+@media(max-width: 768px) {
+
+
+     .table{
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+     }
+
+
+
+}
+
+.btn{
+  margin-left: 8px;
+  margin-top: 3px;
+ }
+

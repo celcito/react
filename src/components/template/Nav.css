@@ -1,0 +1,45 @@
+.menu a {
+    display: block;
+    text-decoration: none;
+    color: #000;
+    padding: 15px;
+    opacity: 0.5;
+          -webkit-transition:all 0.2s linear;
+   -moz-transition:all 0.2s linear;
+     -o-transition:all 0.2s linear;
+        transition:all 0.2s linear;
+}
+
+.menu a:hover {
+    
+     opacity: 1;
+    background: #ffc107;
+      padding-top: 20px ;
+}
+
+.menu{
+     background: #ffe082!important;
+
+
+}
+
+@media(max-width: 768px) {
+    .menu {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .menu a {
+        display: inline;
+        padding: 10px;
+        margin: 0px;
+    }
+
+    .menu {
+        height: 100%;
+     }
+
+
+
+}
