@@ -19,7 +19,7 @@ user: { name: '',fone:'', birth_date: '', expires_at:'',cnh_number:'',doc_type:'
 }
 var typeMethod=''
 var sucess=''
-var confirm=''
+//var confirm=''
 
 export default class UserCrud extends Component {
 
@@ -47,8 +47,6 @@ export default class UserCrud extends Component {
         let cnhError =  (user.cnh_number==='') ? 'Cnh não pode ser vazio': ''
         let cpfError =  this.validarCPF( user.cpf_number ) ? '': 'Cpf invalido'
         let catError =  (user.category==='') ? 'Categoria não pode ser vazio': ''
-      
-        console.log(this.validarCPF( user.cpf_number ))
         this.setState({  nameError, telError,birthError,cnhError,cpfError,catError,sucess,typeMethod});
           
        //verifica se todos os campos foram preenchidos
@@ -73,10 +71,11 @@ export default class UserCrud extends Component {
                     typeMethod = (method ==='post') ? 'Cadastrado' : 'Alterado'
                     this.setState({typeMethod,sucess});
 
-                     setTimeout(() => {
-                     sucess=false
-                     typeMethod=''   
-                     this.setState({ sucess,typeMethod});
+                    //depois de 3 segundos seta o state para remover o aviso
+                    setTimeout(() => {
+                          sucess=false
+                          typeMethod=''   
+                          this.setState({ sucess,typeMethod});
                     }, 3000);
                  
                    }).catch(function (error) {
@@ -101,18 +100,21 @@ export default class UserCrud extends Component {
     renderNotice()   {     
         if (this.state.sucess && this.state.sucess!==''){
             return (
-                <div id="teste" className=" col-md-12  col-md-12 spacer mt-2  rounded pt-4 ">{this.state.typeMethod}  com sucesso</div>
+                <div id="sucesso" className=" col-md-12  col-md-12 spacer mt-2  rounded pt-4 ">{this.state.typeMethod}  com sucesso</div>
             )
-        }else if (this.state.sucess!=='' && this.state.sucess!==true){
-            <div id="teste" className=" col-md-12  col-md-12 spacer mt-2  rounded pt-4 ">{this.state.typeMethod} Erro contate o suporte</div>
         }
+        //else if (this.state.sucess==='' && this.state.sucess!==true){
+        //     return (
+        //              <div id="teste" className=" col-md-12  col-md-12 spacer mt-2  rounded pt-4 ">{this.state.typeMethod} Erro contate o suporte</div>
+        //     )
+        // }
     }
 
 
      renderConfirm()   {     
         if (this.state.confirm!=='' & this.state.confirm===false ){
             return (
-                <div id="excluir" className="col-md-12 spacer mt-2  rounded pt-4 ">{this.state.typeMethod} Deseja Realmente Excluir este Motorista!
+                <div id="aviso" className="col-md-12 spacer mt-2  rounded pt-4 ">{this.state.typeMethod} Deseja Realmente Excluir este Motorista!
                 <button type="button" className="btn btn-info" onClick={() => this.remove(this.state.userDelete,true)}>OK</button>
                 </div>
             )
@@ -136,9 +138,7 @@ export default class UserCrud extends Component {
                     <div className="col-12 col-md-6">
                         <div className="form-group">
                             <label>Telefone</label>
-         {/*                   <input type="text" className="form-control"  required="required"  pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$" name="fone" value={this.state.user.fone} onChange={e=> this.updateField(e)}
-                            placeholder="Digite Telefone." />*/}
-             <InputMask  className="form-control"  value={this.state.user.fone} placeholder="Digite Telefone." name="fone" mask="(99)9999-9999" onChange={e=> this.updateField(e)} />
+                             <InputMask  className="form-control"  value={this.state.user.fone} placeholder="Digite Telefone." name="fone" mask="(99)9999-9999" onChange={e=> this.updateField(e)} />
 
                     <div style={{ fontSize: 12, color: "red" }}>
                                     {this.state.telError}
@@ -148,11 +148,7 @@ export default class UserCrud extends Component {
                     <div className="col-12 col-md-6">
                         <div className="form-group">
                             <label>Data de nascimento</label>
-                        {/*   <input type="text" className="form-control" name="birth_date"  mask="99/99/9999"  value={this.state.user.birth_date} onChange={e=> this.updateField(e)}
-                            placeholder="Digite data de nascimento." />*/}
-
-                            <InputMask  className="form-control"  value={this.state.user.birth_date}   placeholder="Digite data de nascimento." name="birth_date"  mask="99/99/9999" onChange={e=> this.updateField(e)} />
-
+                             <InputMask  className="form-control"  value={this.state.user.birth_date}   placeholder="Digite data de nascimento." name="birth_date"  mask="99/99/9999" onChange={e=> this.updateField(e)} />
                               <div style={{ fontSize: 12, color: "red" }}>
                                     {this.state.birthError}
                                 </div>
@@ -161,10 +157,7 @@ export default class UserCrud extends Component {
                     <div className="col-12 col-md-6">
                         <div className="form-group">
                             <label>cpf</label>
-                 {/*           <input type="text" className="form-control" name="cpf_number"  value={this.state.user.cpf_number} onChange={e=> this.updateField(e)}
-                            placeholder="Digite o numero do cpf." />*/}
-
-                <InputMask  className="form-control"  value={ this.state.user.cpf_number}placeholder="Digite o numero do cpf."  name="cpf_number" mask="999.999.999-99" onChange={e=> this.updateField(e)} />
+                    <InputMask  className="form-control"  value={ this.state.user.cpf_number}placeholder="Digite o numero do cpf."  name="cpf_number" mask="999.999.999-99" onChange={e=> this.updateField(e)} />
 
                              <div style={{ fontSize: 12, color: "red" }}>
                                     {this.state.cpfError}
@@ -175,11 +168,7 @@ export default class UserCrud extends Component {
                     <div className="col-12 col-md-6">
                         <div className="form-group">
                             <label>cnh</label>
-                     {/*       <input type="text" className="form-control" name="cnh_number" value={this.state.user.cnh_number} onChange={e=> this.updateField(e)}
-                            placeholder="Digite numero da cnh." />*/}
-
-
-                <InputMask  className="form-control"  value={this.state.user.cnh_number}  placeholder="Digite data de nascimento." name="cnh_number"  mask="999999999999999" onChange={e=> this.updateField(e)} />
+                            <InputMask  className="form-control"  value={this.state.user.cnh_number}  placeholder="Digite data de nascimento." name="cnh_number"  mask="999999999999999" onChange={e=> this.updateField(e)} />
 
                              <div style={{ fontSize: 12, color: "red" }}>
                                     {this.state.cnhError}
@@ -252,7 +241,7 @@ export default class UserCrud extends Component {
                     return false;       
             // Valida 2o digito 
             add = 0;    
-            for (var i = 0; i < 10; i ++)       
+            for ( i = 0; i < 10; i ++)       
                 add += Number(cpf.charAt(i)) * (11 - i);  
            rev = 11 - (add % 11);  
             if (rev === 10 || rev === 11) 
@@ -263,18 +252,17 @@ export default class UserCrud extends Component {
 }
 
     convertDate(timestamp=''){
-
-    let res =null,
-    dia=null,
-    data=null
-        if(timestamp.indexOf("-") !== -1){
-            res = timestamp.split("-");
-            dia = res[2].split('T')
-            data = dia[0]+"/"+res[1]+"/"+res[0]
-        }else{
-            data = timestamp;
-        }
-        return data
+        let res =null,
+        dia=null,
+        data=null
+            if(timestamp.indexOf("-") !== -1){
+                res = timestamp.split("-");
+                dia = res[2].split('T')
+                data = dia[0]+"/"+res[1]+"/"+res[0]
+            }else{
+                data = timestamp;
+            }
+            return data
     }
 
 
