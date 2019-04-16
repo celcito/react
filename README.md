@@ -12,6 +12,8 @@ npm install react-input-mask --save
 
 npm install @material-ui --save
 
+ou npm install
+
 npm start
 
 Dentro da pasta backend existe um json com dados dados.json
