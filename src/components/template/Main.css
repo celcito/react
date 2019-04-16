@@ -32,3 +32,14 @@ main > div {
   margin-top: 3px;
  }
 
+#sucesso{
+  background:#7ea264
+}
+
+#erro{
+  background:#ad5a6c
+}
+
+#aviso{
+  background:#90a6a7
+}
